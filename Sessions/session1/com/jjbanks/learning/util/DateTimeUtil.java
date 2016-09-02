@@ -41,13 +41,21 @@ public class DateTimeUtil {
 		return ldt;
 	}
 
+	/**
+	 * 
+	 * @param from
+	 * @param to
+	 * @return local date-time that is randomly generated
+	 */
 	public static LocalDateTime generateRandomDateTime(LocalDate from, LocalDate to) {
 
 		if(!from.isBefore(to)) {
 			throw new IllegalArgumentException("from local date must be before the 'to' local date");
 		}
+		
 		RandomDate rd = new RandomDate(from, to);
 		LocalDate ld = rd.nextDate();
+		
 		RandomTime rt = new RandomTime();
 		LocalTime lt = rt.nextTime();
 		LocalDateTime ldt = LocalDateTime.of(ld, lt);
@@ -96,12 +104,21 @@ public class DateTimeUtil {
 		private final LocalDate maxDate;
 		private final Random random;
 
+		/**
+		 * Constructor using minimum and maximum date range
+		 * @param minDate
+		 * @param maxDate
+		 */
 		public RandomDate(LocalDate minDate, LocalDate maxDate) {
 			this.minDate = minDate;
 			this.maxDate = maxDate;
 			this.random = new Random();
 		}
 
+		/**
+		 * Generates another local date 
+		 * @return local date
+		 */
 		public LocalDate nextDate() {
 			int minDay = (int) minDate.toEpochDay();
 			int maxDay = (int) maxDate.toEpochDay();
