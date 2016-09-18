@@ -1,4 +1,5 @@
 package com.jjbanks.learning.util;
+
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -75,11 +76,11 @@ public class TimeUtilTest {
 
         LocalDate ld = LocalDate.of(2016, 10, 13);
         LocalTime lt = LocalTime.of(14, 12, 24, 192829);
-        
+
         String zoneIdentifier = "America/Los_Angeles";
         ZonedDateTime zonedDateTime = ZonedDateTime.of(ld, lt,
                 ZoneId.of(zoneIdentifier));
-        
+
         String newZoneIdentifier = "America/Chicago";
         int minutesAdjustment = 120;
 
